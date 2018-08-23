@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mac Sports templates generator</title>
+
+    <meta name="description" content="eBay templates generator">
+    <meta name="author" content="Ngo Ngoc Thang!">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+	<link rel="stylesheet" href="lib/jQuery-File-Upload-9.22.0/css/jquery.fileupload.css">
+	
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron">
+				<h1>
+					Mac Sports template generator
+				</h1>
+				<p>
+					Please fill all the info and click generate for creating Mac Sports templates for your store.
+				</p>
+			</div>
+			<form role="form" action="generate-template.php" method="POST" enctype="multipart/form-data">
+				<div class="form-group">					 
+					<label for="fileupload">
+						Main banner (Only allows GIF, PNG, JPEG; Size should be 1333x277 pixel)
+					</label>
+					<!--<input id="fileupload" type="file" name="files[]" data-url="lib/jQuery-File-Upload-9.22.0/server/php/" multiple>-->
+					<span class="btn btn-success fileinput-button">
+						<i class="glyphicon glyphicon-plus"></i>
+						<span>Select file...</span>
+						<!-- The file input field used as target for the file upload widget -->
+						<input id="fileupload" type="file" name="files[]"  data-url="lib/jQuery-File-Upload-9.22.0/server/php/" >
+					</span>
+					<!-- The global progress bar -->
+					<div id="progress" class="progress">
+						<div class="progress-bar progress-bar-success" style="width: 0%;"></div>
+					</div>
+					<!-- The container for the uploaded files -->
+					<div id="files" class="files"></div>
+				</div>
+				
+				<div class="form-group">					 
+					<label for="productimages">
+						slider images (Only allows GIF, PNG, JPEG; Sizes should be 1329x406 pixels)
+					</label>
+					<!--<input id="fileupload" type="file" name="files[]" data-url="lib/jQuery-File-Upload-9.22.0/server/php/" multiple>-->
+					<span class="btn btn-success fileinput-button">
+						<i class="glyphicon glyphicon-plus"></i>
+						<span>Select files...</span>
+						<!-- The file input field used as target for the file upload widget -->
+						<input id="productimages" type="file" name="files[]"  data-url="lib/jQuery-File-Upload-9.22.0/server/php/" multiple>
+					</span>
+					<!-- The global progress bar -->
+					<div id="productimages_progess" class="progress">
+						<div class="progress-bar progress-bar-success" style="width: 0%;"></div>
+					</div>
+					<!-- The container for the uploaded files -->
+					<div id="productimages_files" class="files"></div>
+				</div>
+				<div class="form-group">					 
+					<label for="spotlight">
+						Title
+					</label>
+					<input class="form-control" id="title" name="title" type="text" />
+				</div>
+				
+				<div class="form-group">					 
+					<label for="part_number">
+						Part Number
+					</label>
+					<input class="form-control" id="part_number" name="part_number" type="text" />
+				</div>	
+				<div class="form-group">					 
+					<label for="description_title">
+						Description title
+					</label>
+					<input class="form-control" id="description_title" name="description_title" type="text" />
+				</div>
+				<div class="form-group">					 
+					<label for="description">
+						Description
+					</label>
+					<textarea class="form-control" rows="3" id="description" name="description"></textarea>
+				</div>
+				<div class="form-group">					 
+					<label for="features">
+						Features
+					</label>
+					<textarea class="form-control" rows="3" id="features" name="features"></textarea>
+				</div>
+				<div class="control-group" id="fields">
+					<label class="control-label" for="field1">Sepcs</label>
+					<div class="controls"> 
+						<div class="entry input-group col-xs-12">						
+								<input class="form-control" name="spec_title[]" type="text" placeholder="Spec Title" />
+								<input class="form-control" name="spec_text[]" type="text" placeholder="Spec Text" />
+							
+							<span class="input-group-btn">
+								<button class="btn btn-success btn-add" type="button">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+							</span>
+						</div>
+					</div>
+					<div><small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another group :)</small></div>
+				</div>				
+				<div class="form-group">					 
+					<label style="display: block;">
+						About the Brand
+					</label>
+					
+					<label for="videopreview">
+						Brand logo
+					</label>
+					<!--<input id="fileupload" type="file" name="files[]" data-url="lib/jQuery-File-Upload-9.22.0/server/php/" multiple>-->
+					<span class="btn btn-success fileinput-button">
+						<i class="glyphicon glyphicon-plus"></i>
+						<span>Select file...</span>
+						<!-- The file input field used as target for the file upload widget -->
+						<input id="brandlogo" type="file" name="files[]"  data-url="lib/jQuery-File-Upload-9.22.0/server/php/" >
+					</span>
+					<!-- The global progress bar -->
+					<div id="brandlogo_progress" class="progress">
+						<div class="progress-bar progress-bar-success" style="width: 0%;"></div>
+					</div>
+					<!-- The container for the uploaded files -->
+					<div id="brandlogo_files" class="files"></div>
+					<label for="about">
+						Brand Introduce
+					</label>
+					<textarea class="form-control" rows="3" id="about" name="about"></textarea>
+				</div>				
+				<div class="form-group">					 
+					<label for="shipping">
+						Shipping
+					</label>
+					<textarea class="form-control" rows="3" id="shipping" name="shipping">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla rhoncus nisl, tincidunt volutpat tellus commodo et. Nullam nulla augue, blandit vitae justo a, porta fermentum justo. Praesent eros nisi, ullamcorper et nisl non, imperdiet porta tortor. Quisque pretium suscipit aliquam. Aliquam egestas, lorem nec auctor efficitur, leo mi ultrices metus, at sollicitudin lacus sem nec neque. Curabitur eu luctus nisi. Pellentesque at efficitur ante. Nam at ex in elit luctus ullamcorper. Integer eget bibendum sapien, at cursus leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</textarea>
+				</div>
+				<div class="form-group">					 
+					<label for="returns">
+						Returns
+					</label>
+					<textarea class="form-control" rows="3" id="returns" name="returns">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla rhoncus nisl, tincidunt volutpat tellus commodo et. Nullam nulla augue, blandit vitae justo a, porta fermentum justo. Praesent eros nisi, ullamcorper et nisl non, imperdiet porta tortor. Quisque pretium suscipit aliquam. Aliquam egestas, lorem nec auctor efficitur, leo mi ultrices metus, at sollicitudin lacus sem nec neque. Curabitur eu luctus nisi. Pellentesque at efficitur ante. Nam at ex in elit luctus ullamcorper. Integer eget bibendum sapien, at cursus leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</textarea>
+				</div>
+				<div class="form-group">					 
+					<label for="warranty">
+						Warranty
+					</label>
+					<textarea class="form-control" rows="3" id="warranty" name="warranty">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla rhoncus nisl, tincidunt volutpat tellus commodo et. Nullam nulla augue, blandit vitae justo a, porta fermentum justo. Praesent eros nisi, ullamcorper et nisl non, imperdiet porta tortor. Quisque pretium suscipit aliquam. Aliquam egestas, lorem nec auctor efficitur, leo mi ultrices metus, at sollicitudin lacus sem nec neque. Curabitur eu luctus nisi. Pellentesque at efficitur ante. Nam at ex in elit luctus ullamcorper. Integer eget bibendum sapien, at cursus leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</textarea>
+				</div>	
+				<div class="form-group">					 
+					<label for="videopreview">
+						Video Preview
+					</label>
+					<!--<input id="fileupload" type="file" name="files[]" data-url="lib/jQuery-File-Upload-9.22.0/server/php/" multiple>-->
+					<span class="btn btn-success fileinput-button">
+						<i class="glyphicon glyphicon-plus"></i>
+						<span>Select file...</span>
+						<!-- The file input field used as target for the file upload widget -->
+						<input id="videopreview" type="file" name="files[]"  data-url="lib/jQuery-File-Upload-9.22.0/server/php/" >
+					</span>
+					<!-- The global progress bar -->
+					<div id="videopreview_progress" class="progress">
+						<div class="progress-bar progress-bar-success" style="width: 0%;"></div>
+					</div>
+					<!-- The container for the uploaded files -->
+					<div id="videopreview_files" class="files"></div>
+				</div>
+				<div class="form-group">					 
+					<label for="spotlight">
+						Video URL
+					</label>
+					<input class="form-control" id="video-url" name="videourl" type="text" />
+				</div>
+				<button type="submit" class="btn btn-primary">
+					Generate
+				</button>
+				<input type="hidden" name="submit" value="1" />
+				<input type="hidden" name="banner" value="" id="banner"/>
+				<input type="hidden" name="brand" value="" id="brand"/>
+				<input type="hidden" name="video" value="" id="video"/>
+				<input type="hidden" name="pimages" value="" id="pimages"/>
+			</form>
+		</div>
+	</div>
+</div>
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="lib/jQuery-File-Upload-9.22.0/js/vendor/jquery.ui.widget.js"></script>
+	<script src="lib/jQuery-File-Upload-9.22.0/js/jquery.iframe-transport.js"></script>
+	<script src="lib/jQuery-File-Upload-9.22.0/js/jquery.fileupload.js"></script>
+	<!-- include summernote css/js for bootstrap 4 -->
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+<script>
+$(document).ready(function() {
+	$('#description').summernote({
+		placeholder: 'description',
+		tabsize: 2,
+		height: 100
+	});
+	$('#specifications').summernote({
+		placeholder: 'Specs',
+		tabsize: 2,
+		height: 100
+	});
+	$('#features').summernote({
+		placeholder: 'Features',
+		tabsize: 2,
+		height: 100
+	});
+	$('#about').summernote({
+		placeholder: 'About',
+		tabsize: 2,
+		height: 100
+	});  
+	$('#shipping').summernote({
+		placeholder: 'Shipping',
+		tabsize: 2,
+		height: 100
+	});
+	$('#returns').summernote({
+		placeholder: 'Returns',
+		tabsize: 2,
+		height: 100
+	});
+	$('#warranty').summernote({
+		placeholder: 'Warranty',
+		tabsize: 2,
+		height: 100
+	});
+  
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files');
+				//console.log(data);
+				$('#banner').val(file.url);
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    });
+    $('#brandlogo').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#brandlogo_files');
+				//console.log(data);
+				$('#brand').val(file.url);
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#brandlogo_progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    });
+    $('#videopreview').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#videopreview_files');
+				//console.log(data);
+				$('#video').val(file.url);
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#videopreview_progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    });
+	//var images = '';
+    $('#productimages').fileupload({
+        dataType: 'json',
+        /*add: function (e, data) {
+            data.context = $('#progress_text').text('Uploading...');
+            data.submit();
+        },*/
+        done: function (e, data) {			
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#productimages_files');				
+				//console.log(data);		
+				$('#pimages').val($('#pimages').val() + '|' + file.url);
+				
+            });
+			
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#productimages_progess .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        },
+    });
+	$(document).on('click', '.btn-add', function(e)
+    {
+        e.preventDefault();
+
+        var controlForm = $('.controls'),
+            currentEntry = $(this).parents('.entry:first'),
+            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+        newEntry.find('input').val('');
+        controlForm.find('.entry:not(:last) .btn-add')
+            .removeClass('btn-add').addClass('btn-remove')
+            .removeClass('btn-success').addClass('btn-danger')
+            .html('<span class="glyphicon glyphicon-minus"></span>');
+    }).on('click', '.btn-remove', function(e)
+    {
+		$(this).parents('.entry:first').remove();
+
+		e.preventDefault();
+		return false;
+	});
+	//$('#pimages').val(images);
+});
+</script>  
+</body>
+</html>
